@@ -12,6 +12,14 @@ class Player
     @y = 300
   end
   
+  def y
+    @y
+  end
+  
+  def x
+    @x
+  end
+  
   def update
     update_jump
     move
@@ -20,4 +28,9 @@ class Player
   def draw
     @icon.draw(@x,@y,1)
   end
+  
+  def width
+    @icon.width
+  end
+  
 end

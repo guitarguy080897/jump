@@ -1,10 +1,10 @@
-class Platform
+class Wood2
   
   def initialize(game_window)
     @game_window = game_window
-    @icon = Gosu::Image.new(@game_window, "images/grass.png")
-    @x = 0
-    @y = 480
+    @icon = Gosu::Image.new(@game_window, "images/wood.png")
+    @x = 200
+    @y = 300
   end
   
   def x

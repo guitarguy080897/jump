@@ -3,11 +3,20 @@ class GameWindow < Gosu::Window
   def initialize
     super(500,500,0)
     @player = Player.new(self)
-    @platform = Platform.new(self)
+    @platforms = [Platform.new(self), Wood.new(self), Wood2.new(self)]
   end
   
-  def platform
-    @platform
+  def platforms
+    @platforms
+  end
+  
+  def get_current_platform(player)
+    @platforms.find do |platform| 
+      player.y >= (platform.y-platform.height) and 
+      player.y <= platform.y and
+      player.x >= platform.x and
+      (player.x+player.width) <= (platform.x+platform.width)
+    end
   end
   
   def update
@@ -20,7 +29,7 @@ class GameWindow < Gosu::Window
   
   def draw
     @player.draw
-    @platform.draw
+    @platforms.each {|platform| platform.draw}
   end
   
   

@@ -7,12 +7,7 @@ module Movement
     if @game_window.button_down? Gosu::Button::KbRight
       move_right
     end
-    if @game_window.button_down? Gosu::Button::KbDown
-      move_down
-    end
-    if @game_window.button_down? Gosu::Button::KbUp
-      move_up
-    end
+   
   end
   
   def move_left
@@ -28,6 +23,7 @@ module Movement
       @x = @game_window.width - @icon.width
     else
       @x = @x + 10
+      gravity
     end
   end
 
@@ -46,5 +42,12 @@ module Movement
       @y = @y + 10
     end
   end
+  
+  def gravity
+    if (current_platform = @game_window.get_current_platform(self)).nil?
+      move_down
+    end
+  end
+  
   
 end

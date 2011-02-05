@@ -25,11 +25,11 @@ module Jump
   end
   
   def handle_down_motion
-    if @y >= (@game_window.platform.y-36)
-      @y = (@game_window.platform.y-36)
-      @jumping = false
-    else
+    if (current_platform = @game_window.get_current_platform(self)).nil?
       @y = @y + 10
+    else
+      @y = current_platform.y - current_platform.height
+      @jumping = false
     end
   end
   
