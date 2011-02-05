@@ -15,15 +15,21 @@ module Jump
       @go_down = true
       @go_up = false
     else
-      @y = @y - 20
+      if @y < 0 
+        @y = 0
+      else
+        @y = @y - 10
+      end
+      
     end
   end
   
   def handle_down_motion
-    if @end_jump_at < Time.now.to_f
+    if @y >= (@game_window.platform.y-36)
+      @y = (@game_window.platform.y-36)
       @jumping = false
     else
-      @y = @y + 20
+      @y = @y + 10
     end
   end
   

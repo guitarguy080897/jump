@@ -1,8 +1,13 @@
 class GameWindow < Gosu::Window
   
   def initialize
-    super(800,600,0)
+    super(500,500,0)
     @player = Player.new(self)
+    @platform = Platform.new(self)
+  end
+  
+  def platform
+    @platform
   end
   
   def update
@@ -15,6 +20,7 @@ class GameWindow < Gosu::Window
   
   def draw
     @player.draw
+    @platform.draw
   end
   
   
